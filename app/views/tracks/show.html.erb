@@ -1,0 +1,48 @@
+<script>
+$(document).ready(function(){
+	$('.add_songs').click(function(){
+		$.ajax({
+			url: '/add_songs',
+			type: 'GET',
+			error: function(data){
+				alert("error");
+			}
+		});
+	});
+});
+</script>
+
+<%=image_tag 'tracks.jpg'%>
+<%=notice%>
+
+<h1><%=@album.singer_name%>#tracks</h1>
+
+<div class="song_section">
+	<%if @album.songs.count==0%>
+		<h2>Empty album</h2>
+	<%else%>
+		<table>
+			<tr>
+				<%@album.songs.each do|e|%>
+				<td>
+					<h2><%=link_to e.name%></h2>
+				</td>
+				<td>
+					<%= link_to 'Play Song', e.audio_file.url, :class => "html5", :target => "_blank" %>
+				</td>
+				<td>
+					<%=link_to 'Remove song', song_path(e.id), :method => "DELETE" %>
+				</td>
+			</tr>
+				<%end%>
+		</table>
+	<%end%>
+</div>
+
+<div class="add_songs">
+	<%=link_to "Add songs", :remote => true%>
+</div>
+<%=link_to "<button>Home</button>".html_safe, tracks_path %>
+
+<div class="result"></div>
+

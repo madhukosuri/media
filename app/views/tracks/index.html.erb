@@ -1,0 +1,33 @@
+<style>
+table,tr
+{
+border: 2px solid black;
+}
+</style>
+<h1>Music Application</h1>
+<p>Tracks#index</p>
+<table>
+	<tr>
+		<th>
+			Album Name
+		</th>
+		<th>
+			Action
+		</th>
+	</tr>
+<%@albums.each do|album|%>
+<tr>
+	<td>
+		<%=link_to album.singer_name, track_path(album.id)%>
+	</td>
+	<td>
+		<%=link_to "Delete", track_path(album.id), confirm: "are you sure?",:method => :delete%>
+	</td>
+</tr>
+<%end%>
+<tr>
+	<td colspan="2">
+		<%=link_to "<button>New Album</button>".html_safe, new_track_path%>
+	</td>
+</tr>
+</table>

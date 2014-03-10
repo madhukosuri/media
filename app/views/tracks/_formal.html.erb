@@ -1,0 +1,28 @@
+ <script>
+// $(document).ready(function(){
+
+// 	$('form').submit(function(){
+//   			alert("submitted");
+//   			//$(this).find(input[type='submit']).attr("disabled", "true");
+//   			alert("ajax");
+//   			$.ajax({
+// 			url: '/create_songs',
+// 			type: 'post',
+// 			error: function(data){
+// 				alert("data");
+// 			},
+// 			return false;
+// 		});
+// 		});
+// });
+ </script>
+
+
+<%=form_for @s, :remote => true, :html => {:multipart => true} do|t|%>
+<%=t.label :name%>
+<%=t.text_field :name%>
+<%=t.file_field :audio_file%>
+<div class="upload">
+	<%=t.submit 'Upload'%>
+</div>
+<%end%>

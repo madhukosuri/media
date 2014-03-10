@@ -1,0 +1,7 @@
+<%#=image_tag 'tracks.jpg'%>
+<h1>Tracks#new</h1><%=link_to "<button> << Back(Home)</button>".html_safe, tracks_path%>
+<%=form_for @album, :url => tracks_path do |t|%>
+<%=t.label :singer_name, "Singer Name:"%>
+<%=t.text_field :singer_name%>
+<%=t.submit%>
+<%end%>
